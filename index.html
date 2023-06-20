@@ -16,12 +16,12 @@
                 <h1>Lista carte del mazzo</h1>
                 <ul class="list-group rounded-0">
                     <li v-for="(card, i) in deck" class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>{{ card.text }}</div>
+                        <div @click="toggleCardStatus(card.number)" :class="{'text-decoration-line-through': card.done}">{{ card.text }}</div>
                         <button @click="removeCard(i)" type="button" class="btn-close"></button>
                     </li>
                     <li class="input-group border border-4 border-primary">
                         <button class="fw-semibold btn btn btn-primary rounded-0" type="button">Add</button>
-                        <input type="text" class="form-control rounded-0" placeholder="...">
+                        <input type="text" class="form-control rounded-0" placeholder="Inserisci una nuova carta nel mazzo">
                     </li>
                 </ul>
             </div>
