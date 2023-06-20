@@ -13,15 +13,15 @@
     <body>
         <div id="root"> <!-- * Vue.js * -->
             <div class="container mt-3 w-50 text-center">
-                <h1>Lista cose da fare</h1>
+                <h1>Lista carte del mazzo</h1>
                 <ul class="list-group rounded-0">
-                    <li v-for="action in actionList" class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>{{ action.text }}</div>
-                        <button type="button" class="btn-close"></button>
+                    <li v-for="(card, i) in deck" class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>{{ card.text }}</div>
+                        <button @click="removeCard(i)" type="button" class="btn-close"></button>
                     </li>
                     <li class="input-group border border-4 border-primary">
-                        <button @click="addAction" class="fw-semibold btn btn btn-primary rounded-0" type="button">Add</button>
-                        <input id="newAction" type="text" class="form-control rounded-0" placeholder="...">
+                        <button class="fw-semibold btn btn btn-primary rounded-0" type="button">Add</button>
+                        <input type="text" class="form-control rounded-0" placeholder="...">
                     </li>
                 </ul>
             </div>

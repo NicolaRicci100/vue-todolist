@@ -6,22 +6,22 @@ const { createApp } = Vue;
 createApp({
     data(){
         return{
-            newAction:'',
-            actionList:[
+            newCard:'',
+            deck:[
                 {
-                    text: 'Dormire',
+                    text: 'Black Lotus',
                     done: false
                 },
                 {
-                    text: 'Alzarsi',
+                    text: 'Ancestral Recall',
                     done: false
                 },
                 {
-                    text: 'Bere',
+                    text: 'Time Walk',
                     done: false
                 },
                 {
-                    text: 'Mangiare',
+                    text: 'Timetwister',
                     done: false
                 },
             ]
@@ -29,6 +29,9 @@ createApp({
     },
 
     methods:{
-        
+        // metodo per togliere una carta
+        removeCard(cardSelected){
+            this.deck.splice(cardSelected, 1);
+        }
     }
 }).mount('#root');
