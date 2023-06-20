@@ -6,6 +6,7 @@ const { createApp } = Vue;
 createApp({
     data(){
         return{
+            newAction:'',
             actionList:[
                 {
                     text: 'Dormire',
