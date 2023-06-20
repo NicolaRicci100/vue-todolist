@@ -25,5 +25,9 @@ createApp({
                 },
             ]
         }
+    },
+
+    methods:{
+        
     }
 }).mount('#root');
