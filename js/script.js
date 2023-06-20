@@ -6,10 +6,11 @@ const { createApp } = Vue;
 createApp({
     data(){
         return{
-            newCard:'',
-            deck:[
+            newCard:'', // per aggiungere le carte con il metodo *addCard*
+            
+            deck:[ // array con le carte (oggetti con numero, nome e status della carta)
                 {   
-                    number: 1, // numeri aggiunti per gestire meglio il metodo *toggleCardStatus*
+                    number: 1,
                     text: 'Black Lotus',
                     done: false
                 },
@@ -32,21 +33,36 @@ createApp({
         }
     },
 
-    computed:{
-
-
-    },
-
     methods:{
-        // metodo per togliere una carta
+
+        //* metodo per togliere una carta
         removeCard(cardSelected){
             this.deck.splice(cardSelected, 1);
         },
-        // metodo per "tagliare" il testo di una carta
+
+        //* metodo per "tagliare" il testo di una carta
         toggleCardStatus(cardSigned){
             this.deck.forEach(card => {
                 if(card.number === cardSigned) card.done = !card.done;
             });
+        },
+
+        //* metodo per aggiungere una carta
+        addCard(){
+            let highNumber = 0;
+            // cerco tra tutte le chiavi 'number' quella col valore più alto
+            this.deck.forEach((card) => {
+                if(card.number > highNumber) highNumber = card.number;
+            });
+            // creo una chiave 'number' per la carta che aggiungerò che sarà più alta della più grande che avevo
+            const addNumber = ++highNumber;
+
+            // costruisco come oggetto la carta nuova
+            const card = {number: addNumber, text: this.newCard, done: false};
+            // la inserisco nell'array
+            this.deck.push(card);
+
+            
         }
     }
 }).mount('#root');
